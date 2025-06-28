@@ -28,16 +28,18 @@
   <h2>인앱 브라우저 우회중</h2>
   <p>이 페이지는 개인적으로 사용하는 페이지 입니다.</p>
   <p>아래 버튼을 눌러 <strong>사파리로 열기</strong></p>
-  <a id="redirectBtn" class="button" target="_blank">사파리에서 열기</a>
+  <a id="redirectBtn" class="button">사파리에서 열기</a>
 
   <script>
     const params = new URLSearchParams(window.location.search);
     const target = params.get("target");
 
     if (target) {
-      document.getElementById("redirectBtn").href = target;
+      const kakaoUrl = "kakaotalk://web/openExternal?url=" + encodeURIComponent(target);
+      document.getElementById("redirectBtn").href = kakaoUrl;
     } else {
-      document.getElementById("redirectBtn").innerText = "잘못된 접근입니다.";
+      document.getElementById("redirectBtn").innerText = "잘못된 접근입니다";
+      document.getElementById("redirectBtn").href = "https://www.google.com";
     }
   </script>
 </body>
