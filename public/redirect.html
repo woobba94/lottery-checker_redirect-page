@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>인앱 브라우저 우회</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      padding: 40px;
+      text-align: center;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    a.button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background: #000;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>인앱 브라우저 우회중</h2>
+  <p>이 페이지는 개인적으로 사용하는 페이지 입니다.</p>
+  <p>아래 버튼을 눌러 <strong>사파리로 열기</strong></p>
+  <a id="redirectBtn" class="button" target="_blank">사파리에서 열기</a>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const target = params.get("target");
+
+    if (target) {
+      document.getElementById("redirectBtn").href = target;
+    } else {
+      document.getElementById("redirectBtn").innerText = "잘못된 접근입니다.";
+    }
+  </script>
+</body>
+</html>
