@@ -47,25 +47,6 @@
 
       btn.addEventListener("click", () => {
         location.href = kakaoUrl;
-
-        // modern clipboard API 우선 사용, fallback execCommand
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(target)
-            .then(() => alert("URL이 클립보드에 복사되었습니다.\n사파리에서 주소창에 붙여넣기 후 이동하세요."))
-            .catch(() => fallbackCopy());
-        } else {
-          fallbackCopy();
-        }
-
-        function fallbackCopy() {
-          const textarea = document.createElement("textarea");
-          textarea.value = target;
-          document.body.appendChild(textarea);
-          textarea.select();
-          document.execCommand("copy");
-          document.body.removeChild(textarea);
-          alert("URL이 클립보드에 복사되었습니다.\n사파리에서 주소창에 붙여넣기 후 이동하세요.");
-        }
       });
     } else {
       btn.textContent = "잘못된 접근";
